@@ -2,53 +2,55 @@
 
 ## Entidades
 
-### clientes (ED)
+### CUSTOMERS (ED)
 - id **(PK)**
 - name
-- lastName
-- **phoneNumber**
-- email
-- address
+- phoneNumber **(UQ)**
+- email **(UQ)**
+- address 
 - postalCode
 - city
 - countryId **(FK)**
   
-### proveedores (ED)
-
-### productos (ED | EC)
+### PRODUCTS (ED | EC)
 - id **(PK)**
-- name
+- name **(UQ)**
 - description
 - image
 - price
 - stock
-- model
 
-### ventas (ED)
-- id (PK)
-- clienteId (FK)
+### SALES (ED)
+- id **(PK)**
+- clienteId **(FK)**
 - fecha
 - monto
-- productoPorVenta (FK)
 
-### Paises (EC)
+### COUNTRIES (EC)
 - id **(PK)**
-- nombre
+- nombre **(UQ)**
 - moneda
 
-### Tipo de Producto (EC)****
+### Tipo de Producto (EC)
 ### Metodo de Pago (EC)
 ### Promociones (EC)
 
 ### productos_por_venta (EP)
 - id **(PK)**
-- productoId **(FK)**
-- ventaId **(FK)**
-- cantidadComprada
+- productId **(FK)**
+- saleId **(FK)**
+- amount
 
 ### Factura (EP)
 
 
 ## Relaciones
-Un **Cliente** tiene **Pais** (1 - 1)
-Un **Cliente** efectua **Ventas** (1 - M)
+Un **cliente** pertenece **pais** (1 - 1)
+Un **cliente** efectua **ventas** (1 - M)
+Una **venta** posee **producto_por_venta** (1 - M)
+Un **producto_por_venta** es **producto** (1 - 1)
+
+## Modelo Relacional de la DB
+![](Modelo_Relacional_DB.png)
+
+## Reglas de Negocio
